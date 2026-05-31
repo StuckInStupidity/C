@@ -6,6 +6,12 @@
 #include <sys/types.h>
 #include <err.h>
 
+/*
+#include <stdlib.h>
+return EXIT_SUCCESS;   // same as return 0
+return EXIT_FAILURE;   // same as return 1
+*/
+
 int fib(int x){
 	if(x<=1) return x; 
 	return fib(x-1) + fib(x-2);
