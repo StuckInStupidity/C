@@ -63,7 +63,6 @@ int wait_pipe(int x){
 	}
 }
 
-/*
 void buff(){
         int pipefd[2]; pipe(pipefd);
 	char buf[] = "Hello from your child !\n";
@@ -85,6 +84,7 @@ void buff(){
                 close(pipefd[0]); free(buff);
         }
 }
+
 void double(){
 	int pipeA[2]; int pipeB[2]; // A : parent -> child, B : child -> parent
 	pipe(pipeA); pipe(pipeB);
@@ -108,4 +108,4 @@ void double(){
 			printf("The Oracle says the square is: %d\n", cin);
 		}
 	}
-}*/
+}
