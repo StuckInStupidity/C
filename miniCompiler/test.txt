@@ -1,0 +1,55 @@
+int a = 3;
+int b = 4;
+int c = a + b;
+
+printf(a);
+printf("\n");
+printf(b);
+printf("\n");
+printf(c);
+printf("\n");
+
+char ch = 'A';
+printf(ch);
+printf("\n");
+printf('Z');
+printf("\n");
+
+printf("Hello");
+printf("World");
+printf("\n");
+
+{
+printf("New block\n");
+	int z = 329;
+        printf(z);
+	printf("\n");
+	int w = z % 14;
+	printf("modulo 14 = ");
+	printf(w);
+	printf("\n");
+}
+
+int i = 3;
+while (i) {
+    printf(i);
+    i = i - 1;
+}
+printf("\n");
+
+int k = 1;
+if (k) {
+    printf("IF branch\n");
+} else {
+    printf("ELSE branch\n");
+    k = 0;
+}
+
+if (k){
+    printf("No ELSE branch\n");
+}
+
+int m = 5 * 2 + 10 / (5 - 3);
+printf(m);
+
+return 42;

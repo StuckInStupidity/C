@@ -1,0 +1,98 @@
+C :
+const int N = x; // en C99, OK pour VLA mais pas pour initialisation statique
+int arr[N][N] = {0};int arr[N] = {0} ; -> works ONLY if N is consider const (NEEDS #define N x), otherwise memset works fine for the empty initializer '\0'
+La syntaxe {0} est un raccourci : elle initialise le premier élément à 0, et tous les autres sont automatiquement mis à 0 grâce à la règle d'initialisation statique en C.
+
+String -> char arr[N]
+Array of strings -> char *arr[N] || char arr[N][N];
+Char arr[N] = {0} -> {‘\0’,’\0’,..} -> empty string also : const char[N]= ""; or better : const char *s = ""; pour avoir une taille quelconque : diff principale entre (pointeur)* et (buffer)[] est une histoire de taille : s modifiable -> s = "hhjdkckd" (*s pointe vers le premier char par ex, s peut pointer n'importe quoi dans la memoire)
+Char arr[N] = “string”; -> {‘s’,…’\0’,..} if N>len(string)
+Char arr3[3] = {‘a’,’b’,’c’};
+Char arr[N] = arr3; -> {‘a’,’b’,’c’,0,0,0…} -> N doit avoir la place pour les 3 et pour le 0 
+so for safety => char arr[N]; strncpy(arr, input, N-1); arr[N-1] = '\0'; printf("%s\n");
+
+Const char *arr[][] -> tableau de pointeurs modifiable (arr[][]) mais pas les char (arr[][][])
+Const char * const arr[][] -> none of them
+Const int *p -> pointeur vers un int non modifiable
+Int * const p -> pointeur non modifiable mais int oui
+Const int * const p -> none of them
+
+int arr[]; int res; int arrr[][]; f(&res, arr, arrr)
+void f(int *a, int *ar, int **p) -> ces deux pointeur pointent vers des int mais l'un dans un tableau l'autre un seul int
+arr+i c'est le pointeur vers arr[i]
+c'est pour ca que *arr -> pointe premier int du tableau et *(arr+i) pour valeur in arr[i]
+et pour valeur in arrr[i][j] -> *(*(arrr+i)+j)
+et pour pointeur arrr[i][j] -> *(arrr+i)+j
+
+char **argv	pointer to pointer	      scattered strings	     very flexible
+char *argv[]	array of string pointers      scattered strings      fixed array size, flexible strings length
+char argv[][]	2D char array	              continuous block       fixed size
+
+En deux etapes :
+gcc -c fonctions.c main.c
+gcc fonctions.o main.o -o mon_programme
+./mon_programme
+En une seule etape :
+gcc main.c fonctions.c -o mon_programme
+./mon_programme 
+//ne pas inclure les .h
+
+use gcc -g main.c fonctions.c -o myprogram.exe to lauch gdb debugger -> gdb commands :
+run -> start the program
+break main -> set a break point at main
+break 25 -> set a break point at 25
+next -> step over a line
+step -> step into a function
+print var -> inspect a variable
+backtrace -> show the call stack
+quit -> exit gdb
+
+-Wall : enables the most common warning
+-Wextra : add more warnings
+-Werror : treats warnings as errors
+-Wpedantic : Warns about non‑standard C extensions.
+-Wshadow : warns when a variable shadows another
+-Wconversion : warns on implicit type conversions
+-Wuninitialized : warns when a variable might be used without being initialized
+-Wpointer-arith : warns about suspicious pointer arithmetic
+-Wformat=2 : strict checking of scanf/printf formats
+-fsanitize=address : detects memory errors
+-fsanitize=undefined : detects undefined behaviour
+-O0 : no optimization
+-O2 : good performance, safe defaults
+-O3 : aggressive optimization (maybe too much)
+-Og : optimized but still debuggable
+
+./mycfile.exe args
+main(int argc, char *argv[]) -> int argc = #args+1 since argv[0] = mycfile.exe
+to see what the code returns behind the printed output -> echo $? (or echo %ERRORLEVEL% on windows cmd/IDE terminal)
+
+1 byte = 8 bits
+Format specifier         DataType      Bytes
+%d(for int value 0 1)      bool        1 bit
+%c                         char          1
+%s                        string         8
+%.5s                    first 5char      8
+%d/%i                    signed int      4
+%u                      unsigned int     4
+%ld/%li/%lu                long          8(linux)/4(windows)
+%lld/llu                 long long       8
+%f                         float (6)     4
+%.2f                      float (2)      4
+%lf                       double         8
+%Lf                    long double       16(linux)/8(windows)
+%e                 scientific notation   8
+%g                    removes zeros      8
+%p                       pointeur        8
+%z/%zu                    size_t         4(32-bit)/8(64-bit)
+%%                   to print '%' char   1
+
+i et d diffère dans scanf : d ne lit qu'un entier en decimal mais i peut lire hexadecimal par exemple
+
+//puts() is like printf but doesn't allow string parsing with formats and variables and adds automatically a new line, so it is safer and faster but a bit less convinient
+
+n >> a : divides n by 2^a
+n << a : multiplies n by 2^a
+ex :
+n >> 1 = n/2
+1 << n = 2^n
