@@ -91,6 +91,10 @@ i et d diffère dans scanf : d ne lit qu'un entier en decimal mais i peut lire h
 
 //puts() is like printf but doesn't allow string parsing with formats and variables and adds automatically a new line, so it is safer and faster but a bit less convinient
 
+Déclaration	           C	                   C++
+int f(void);	Aucun paramètre      	    Aucun paramètre
+int f();	    Paramètres non spécifiés	Aucun paramètre
+
 n >> a : divides n by 2^a
 n << a : multiplies n by 2^a
 ex :
