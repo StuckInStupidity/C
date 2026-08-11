@@ -96,3 +96,10 @@ n << a : multiplies n by 2^a
 ex :
 n >> 1 = n/2
 1 << n = 2^n
+
+ET logique => &&
+ET binaire => &
+OU logique => ||
+OU binaire => |
+XOR binaire => ^
+Complement à un => ~
