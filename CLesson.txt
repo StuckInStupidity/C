@@ -6,10 +6,13 @@ La syntaxe {0} est un raccourci : elle initialise le premier élément à 0, et 
 String -> char arr[N]
 Array of strings -> char *arr[N] || char arr[N][N];
 Char arr[N] = {0} -> {‘\0’,’\0’,..} -> empty string also : const char[N]= ""; or better : const char *s = ""; pour avoir une taille quelconque : diff principale entre (pointeur)* et (buffer)[] est une histoire de taille : s modifiable -> s = "hhjdkckd" (*s pointe vers le premier char par ex, s peut pointer n'importe quoi dans la memoire)
-Char arr[N] = “string”; -> {‘s’,…’\0’,..} if N>len(string)
+Char arr[N] = “string”; -> {‘s’,…’\0’,..} -> syntaxe possible qu'a l'init sinon -> strcpy()
 Char arr3[3] = {‘a’,’b’,’c’};
-Char arr[N] = arr3; -> {‘a’,’b’,’c’,0,0,0…} -> N doit avoir la place pour les 3 et pour le 0 
+Char arr[N] = arr3; -> {‘a’,’b’,’c’,0,0,0…} -> if N>len(string), N doit avoir la place pour les 3 et pour le 0 
 so for safety => char arr[N]; strncpy(arr, input, N-1); arr[N-1] = '\0'; printf("%s\n");
+
+char arr[100]; -> sizeof arr = 100
+char *arr = malloc(100); -> sizeof arr = 4 ou 8 -> sizeof *arr = 100
 
 Const char *arr[][] -> tableau de pointeurs modifiable (arr[][]) mais pas les char (arr[][][])
 Const char * const arr[][] -> none of them
