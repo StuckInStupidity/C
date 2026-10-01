@@ -12,7 +12,7 @@ Char arr[N] = arr3; -> {‘a’,’b’,’c’,0,0,0…} -> if N>len(string), N
 so for safety => char arr[N]; strncpy(arr, input, N-1); arr[N-1] = '\0'; printf("%s\n");
 
 char arr[100]; -> sizeof arr = 100
-char *arr = malloc(100); -> sizeof arr = 4 ou 8 -> sizeof *arr = 100
+char *arr = malloc(100); -> sizeof arr = 4 ou 8 -> sizeof *arr = 1
 
 Const char *arr[][] -> tableau de pointeurs modifiable (arr[][]) mais pas les char (arr[][][])
 Const char * const arr[][] -> none of them
