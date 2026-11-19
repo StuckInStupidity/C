@@ -109,4 +109,15 @@ ET binaire => &
 OU logique => ||
 OU binaire => |
 XOR binaire => ^
-Complement à un => ~
+Complement à un  / NOT binaire => ~
+NOT logique => !
+
+Ex :
+// Set the bit at position pos to 1
+set_bit() {return n | (0x1u << pos);}
+
+// Set the bit at position pos to 0
+unset_bit() {return n & ~(0x1u << pos);}
+
+// Invert the bit at position pos
+invert_bit() {return n ^ (0x1u << pos);}
