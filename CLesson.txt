@@ -90,6 +90,14 @@ Format specifier         DataType      Bytes
 %z/%zu                    size_t         4(32-bit)/8(64-bit)
 %%                   to print '%' char   1
 
+Équivalences en C : 
+Forme courte	                 Forme longue
+long long	                    long long int
+unsigned long long	       unsigned long long int
+long	                           long int
+unsigned	                      unsigned int
+short	                           short int
+
 i et d diffère dans scanf : d ne lit qu'un entier en decimal mais i peut lire hexadecimal par exemple
 
 //puts() is like printf but doesn't allow string parsing with formats and variables and adds automatically a new line, so it is safer and faster but a bit less convinient
